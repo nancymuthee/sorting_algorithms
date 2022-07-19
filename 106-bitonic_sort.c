@@ -20,7 +20,7 @@ void print_range(int *array, int r, int r1)
 }
 
 /**
- * compAndSwap -
+ * compAndSwap - swap two elements in an array
  * @a: array
  * @i: an index
  * @j: other index
