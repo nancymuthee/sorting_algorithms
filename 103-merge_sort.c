@@ -1,10 +1,9 @@
 #include  "sort.h"
-#include  <stdio.h>
-/* *
-*_calloc - this is a calloc function
-*@nmemb: number of elements
-*@size: bit size of each element
-*Return: pointer to memory assignment
+/**
+ * _calloc - this is a calloc function
+ * @nmemb: number of elements
+ * @size: bit size of each element
+ * Return: pointer to memory assignment
  */
 void * _calloc ( unsigned  int nmemb, unsigned  int size)
 {
@@ -20,18 +19,19 @@ void * _calloc ( unsigned  int nmemb, unsigned  int size)
 		p[i] = '\0';
 	return (p);
 }
-/* *
-*merge - make a merge
-*@arr: one from start to mid
-*@tmp: temp array used in merge, was created outside to
-*optimize reducing the system calls
-*@start: first element position
-*@mid: middle array
-*@end: last element position
-* */
+
+/**
+ * merge - make a merge
+ * @arr: one from start to mid
+ * @tmp: temp array used in merge, was created outside to
+ * optimize reducing the system calls
+ * @start: first element position
+ * @mid: middle array
+ * @end: last element position
+ */
 void  merge ( int *arr, int *tmp, int start, int mid, int end)
 {
-	/*   sizes and temp arrays */
+	/* sizes and temp arrays */
 	int size_left = mid - start + 1 , size_right = end - mid;
 	int *array_left, *array_right;
 	/* counters */
@@ -67,15 +67,16 @@ void  merge ( int *arr, int *tmp, int start, int mid, int end)
 	printf ( " [Done]: " );
 	print_array (&arr[start], left + right);
 }
-/* *
-*mergesort - function that sorts an array of integers
-*in ascending order using the Merge sort algorithm
-*@array: array of integers
-*@tmp: temp array used in merge, was created outside to
-*optimize reducing the system calls
-*@start: first element position
-*@end: last element position
-*Return: void
+
+/**
+ * mergesort - function that sorts an array of integers
+ * in ascending order using the Merge sort algorithm
+ * @array: array of integers
+ * @tmp: temp array used in merge, was created outside to
+ * optimize reducing the system calls
+ * @start: first element position
+ * @end: last element position
+ * Return: void
  */
 void  mergesort ( int *array, int *tmp, int start, int end)
 {
@@ -91,12 +92,13 @@ void  mergesort ( int *array, int *tmp, int start, int end)
 		merge (array, tmp, start, mid, end);
 	}
 }
-/* *
-*merge_sort - function that sorts an array of integers
-*in ascending order using the Merge sort algorithm
-*@size: size of the list
-*@array: array of integers
-*Return: void
+
+/**
+ * merge_sort - function that sorts an array of integers
+ * in ascending order using the Merge sort algorithm
+ * @size: size of the list
+ * @array: array of integers
+ * Return: void
  */
 void  merge_sort ( int *array, size_t size)
 {

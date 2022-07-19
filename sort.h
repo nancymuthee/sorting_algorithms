@@ -33,6 +33,11 @@ void counting_sort(int *array, size_t size);
 void merge_sort(int *array, size_t size);
 void heap_sort(int *array, size_t size);
 void radix_sort(int *array, size_t size);
+void print_range(int *array, int r, int r1);
+void compAndSwap(int a[], int i, int j, int dir);
+void bitonicMerge(int a[], int low, int n, int dir, const int N);
+void bitonicSort(int a[], int low, int n, int dir, const int N);
+void bitonic_sort(int *array, size_t size);
 void bitonic_sort(int *array, size_t size);
 void quick_sort_hoare(int *array, size_t size);
 

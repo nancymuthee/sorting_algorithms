@@ -1,11 +1,10 @@
 #include  "sort.h"
-#include  <stdio.h>
 
-/* *
-* swap - utility function to swap to integers
-* @a: integer a
-* @b: integer b
-* */
+/**
+ * swap - utility function to swap to integers
+ * @a: integer a
+ * @b: integer b
+ */
 void  swap ( int *a, int *b)
 {
 	int t = *a;
@@ -14,14 +13,14 @@ void  swap ( int *a, int *b)
 	*b = t;
 }
 
-/* *
-* maxHeapify - The main function to heapify a Max Heap. The function
-* assumes that everything under given root (element at index idx)
-* is already heapified
-* @array: array
-* @size: size of the array for printing
-* @idx: index
-* @n: size of the array to run
+/**
+ * maxHeapify - The main function to heapify a Max Heap. The function
+ * assumes that everything under given root (element at index idx)
+ * is already heapified
+ * @array: array
+ * @size: size of the array for printing
+ * @idx: index
+ * @n: size of the array to run
  */
 void  maxHeapify ( int *array, size_t size, int idx, size_t n)
 {
@@ -33,9 +32,9 @@ void  maxHeapify ( int *array, size_t size, int idx, size_t n)
 	if (left < ( int )n && array[left] > array[largest])
 		largest = left;
 
-	/* *
+	/**
 	 * See if right child of root exists and is greater than
-     *the largest so far
+	 * the largest so far
 	 */
 	if (right < ( int )n && array[right] > array[largest])
 		largest = right;
@@ -49,17 +48,17 @@ void  maxHeapify ( int *array, size_t size, int idx, size_t n)
 	}
 }
 
-/* *
-* heap_sort - The main function to sort an array of given size
-* @array: array to sort
-* @size: size of the array
-* */
+/**
+ * heap_sort - The main function to sort an array of given size
+ * @array: array to sort
+ * @size: size of the array
+ */
 void  heap_sort ( int *array, size_t size)
 {
 	int i;
-	/* *
+	/**
 	 * Start from bottommost and rightmost internal mode and heapify all
-     * internal modes in bottom up way
+	 * internal modes in bottom up way
 	 */
 	if (array == '\0' || size < 2 )
 		return ;
@@ -67,17 +66,17 @@ void  heap_sort ( int *array, size_t size)
 	for (i = (size - 2 ) / 2 ; i >= 0 ; --i)
 		maxHeapify (array, size, i, size);
 
-	/* *
-	* Repeat following steps while heap size is greater than 1.
-    * The last element in max heap will be the minimum element
-	*/
+	/**
+	 * Repeat following steps while heap size is greater than 1.
+	 * The last element in max heap will be the minimum element
+	 */
 	for (i = (size - 1 ); i > 0 ; --i)
 	{
-		/* *
-		* The largest item in Heap is stored at the root. Replace
-		*it with the last item of the heap followed by reducing the
-		*size of heap by 1.
-		*/
+		/**
+		 * The largest item in Heap is stored at the root. Replace
+		 * it with the last item of the heap followed by reducing the
+		 * size of heap by 1.
+		 */
 		swap (&array[ 0 ], &array[i]);
 		print_array (array, size);
 
