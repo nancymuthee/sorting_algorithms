@@ -49,14 +49,14 @@ int partition(int *array, int low, int high, size_t size)
  */
 void quickSort(int *array, int low, int high, size_t size)
 {
-	int pivot;
+	int pi;
 
 	if (low < high)
 	{
-		/* pivot is partitioning index, array[pivot] is now at right place */
+		/* pi is partitioning index, array[pi] is now at right place */
 		pivot = partition(array, low, high, size);
-		quickSort(array, low, pivot, size);    /* Before pivot */
-		quickSort(array, pivot + 1, high, size);   /* After pivot */
+		quickSort(array, low, pi, size);    /* Before pi */
+		quickSort(array, pi + 1, high, size);   /* After pi */
 	}
 }
 
