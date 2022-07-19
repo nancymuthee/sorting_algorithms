@@ -1,4 +1,5 @@
 #include  "sort.h"
+#include <stdio.h>
 
 /**
  * swap - utility function to swap to integers
