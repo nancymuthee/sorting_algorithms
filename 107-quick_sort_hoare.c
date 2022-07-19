@@ -1,18 +1,4 @@
 #include "sort.h"
-/**
- * swap - swaps 2 elements
- * @elm: an element
- * @other_elm: other element
- * Return: void
- */
-void swap(int *elm, int *other_elm)
-{
-	int tmp;
-
-	tmp = *elm;
-	*elm = *other_elm;
-	*other_elm = tmp;
-}
 
 /**
  * partition - target of partitions is, given an array and an element x
@@ -23,39 +9,34 @@ void swap(int *elm, int *other_elm)
  * @low: starting index
  * @high: ending index
  * @size: array size
- * Return: the index of the last swap
+ * Return: partitioning index
  */
 int partition(int *array, int low, int high, size_t size)
 {
 	/* pivot (Element to be placed at right position) */
-	int pivot = array[high];
-	/**
-	 * i (Index of smaller element and indicates the
-	 * right position of pivot found so far)
-	 */
-	int i = low - 1, j;
+	int tmp, pivot = array[high];
 
-	for (j = low; j <= high - 1; j++)
+	while (low <= high)
 	{
-		/* If current element is smaller than the pivot */
-		if (array[j] < pivot)
+		while (array[low] < pivot)
+			low++;
+		while (array[high] > pivot)
+			high--;
+		if (low <= high)
 		{
-			i++;    /* increment index of smaller element */
-			if (i != j)
+			if (low != high)
 			{
-				swap(&array[i], &array[j]);
+				tmp = array[low];
+				array[low] = array[high];
+				array[high] = tmp;
 				print_array(array, size);
 			}
+			low++;
+			high--;
 		}
 	}
-	if (pivot < array[i + 1])
-	{
-		swap(&array[i + 1], &array[high]);
-		print_array(array, size);
-	}
-	return (i + 1);
+	return (high);
 }
-
 
 /**
  * quickSort - picks an element as a pivot and partitions the given
@@ -74,7 +55,7 @@ void quickSort(int *array, int low, int high, size_t size)
 	{
 		/* pivot is partitioning index, array[pivot] is now at right place */
 		pivot = partition(array, low, high, size);
-		quickSort(array, low, pivot - 1, size);    /* Before pivot */
+		quickSort(array, low, pivot, size);    /* Before pivot */
 		quickSort(array, pivot + 1, high, size);   /* After pivot */
 	}
 }
