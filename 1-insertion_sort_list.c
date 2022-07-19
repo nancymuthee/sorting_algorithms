@@ -1,37 +1,39 @@
 #include "sort.h"
 /**
- * selection_sort - sorts an array of integers in ascending order using
- * the Selection sort algorithm
- * @array: pointer to array
- * @size: size of the array
- **/
-void selection_sort(int *array, size_t size)
+ * insertion_sort_list - sorts DLL of integers (ascending)
+ * by Insertion sort algorithm
+ * @list: double pointer to the head of DLL
+ * Return: void
+ */
+void insertion_sort_list(listint_t **list)
 {
-	size_t i, j, n, k;
-	int aux, flag;
+	listint_t *node, *tmp;
 
-	if (array)
+	if (list == NULL || *list == NULL || (*list)->next == NULL)
+		return;
+	node = (*list)->next;
+	while (node != NULL)
 	{
-		for (i = 0; i < size; i++)
+		tmp = node->next;
+
+		while (node->prev && node->n < node->prev->n)
 		{
-			aux = array[i];
-			flag = 0;
-			for (j = i; j < size ; j++)
-			{
-				if (array[j] < aux)
-				{
-					k = j;
-					aux = array[j];
-					flag = 1;
-				}
-			}
-			if (flag == 1)
-			{
-				n = array[i];
-				array[i] = array[k];
-				array[k] = n;
-				print_array(array, size);
-			}
+			node->prev->next = node->next;
+
+			if (node->next != NULL)
+				node->next->prev = node->prev;
+
+			node->next = node->prev;
+			node->prev = node->next->prev;
+
+			if (node->prev != NULL)
+				node->prev->next = node;
+			else
+				*list = node;
+
+			node->next->prev = node;
+			print_list(*list);
 		}
+		node = tmp;
 	}
 }
